@@ -4,6 +4,10 @@ import { complexityRiseCatalog } from './complexity.rise.catalog';
 import { patternCatalog } from './pattern.catalog';
 import { noveltyUseCatalog } from './novelty.use.catalog';
 import { noveltyCatalog } from './novelty.catalog';
+import { devEnvsCatalog } from './dev.environment.catalog'
+import { devMeansCatalog } from './dev.means.catalog';
+import { OSCatalog } from './os.catalog';
+
 
 export const configSettings = [
     {
@@ -12,6 +16,13 @@ export const configSettings = [
         value: functionCatalog,
         required: true,
         multi: true,
+    },
+    {
+        label: 'environment analysis',
+        description: 'Choose your development environment',
+        value: devEnvsCatalog,
+        required: true,
+        multi: false,
     },
     {
         label: 'complexity analysis',
@@ -41,6 +52,20 @@ export const configSettings = [
         label: 'pattern usage',
         description: 'Specify the percentage of use of standard modules',
         value: patternCatalog,
+        required: true,
+        multi: false,
+    },
+    {
+        label: 'means analysis',
+        description: 'Specify development means',
+        value: devMeansCatalog,
+        required: true,
+        multi: false,
+    },
+    {
+        label: 'OS analysis',
+        description: 'Specify operation system',
+        value: OSCatalog,
         required: true,
         multi: false,
     },

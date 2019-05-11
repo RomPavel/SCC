@@ -94,7 +94,7 @@ export default {
           this.errorMessages[ind] = "";
         }
       });
-      this.$forceUpdate()
+      this.$forceUpdate();
     },
     getCurrentConfigGroupLabel() {
       return this.configSettings[this.selectedGroupInd].label;
@@ -104,7 +104,7 @@ export default {
     configSettings() {
       const { configSettings } = this.$store.getters;
       return configSettings;
-    },
+    }
   }
 };
 </script>
