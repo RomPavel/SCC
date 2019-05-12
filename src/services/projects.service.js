@@ -1,7 +1,7 @@
 import store from '../store/store'
 
 import axios from 'axios'
-const url = process.env.API_URL || 'http://localhost:3333/api'
+const url = process.env.VUE_APP_API_URL || 'http://localhost:3333/api'
 export async function getAllProjects() {
     const { data } = await axios.get(`${url}/software/all`);
     return data;
