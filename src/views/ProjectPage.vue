@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { findProjectById } from "../utils/projects.utils";
+import { findProjectById } from "../services/projects.service";
 export default {
   name: "ProjectPage",
   props: ["id"],

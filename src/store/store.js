@@ -1,16 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getAllProjects } from "../utils/projects.utils";
-import { getConfigSettings } from "../utils/config.settings.utils";
-
-// import { HTTP_1, HTTP_2 } from '@/request/request'
-// import cookie from 'vue-cookie'
+import { getAllProjects, createSoftware } from "../services/projects.service";
+import { getConfigSettings } from "../services/config.settings.service";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isAuthorized: true, // Boolean(cookie.get('Authorization'))
+    //isAuthorized: true, // Boolean(cookie.get('Authorization'))
     projects: [],
     configSettings: [],
   },
@@ -37,19 +34,18 @@ export default new Vuex.Store({
     updateConfigSettings(state, props) {
       state.configSettings = props;
     }
-    // updateAuth(state, props) {
-    //   state.isAuthorized = props
-    // },
-
   },
   actions: {
-    loadUserProjects({ commit }) {
-      const projects = getAllProjects();
+    async loadUserProjects({ commit }) {
+      const projects = await getAllProjects();
       commit('updateProjects', projects);
     },
-    loadConfigurationSettings({ commit }) {
-      const configSettings = getConfigSettings();
+    async loadConfigurationSettings({ commit }) {
+      const configSettings = await getConfigSettings();
       commit('updateConfigSettings', configSettings);
+    },
+    async createSoftware({ }, props) {
+      return createSoftware(props);
     }
     // login({ commit }, props) {
     //   const token = props.token

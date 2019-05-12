@@ -2,6 +2,7 @@ const express = require('express');
 const history = require('connect-history-api-fallback');
 var path = require('path')
 var serveStatic = require('serve-static')
+require('babel-polyfill');
 
 const app = express();
 app.use(history({

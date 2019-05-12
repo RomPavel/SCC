@@ -6,7 +6,7 @@
       </md-table-toolbar>
 
       <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="ID" md-numeric>{{ item.id }}</md-table-cell>
+        <md-table-cell md-label="ID" md-numeric>{{ item._id }}</md-table-cell>
         <md-table-cell md-label="Name">{{ item.name }}</md-table-cell>
         <md-table-cell md-label="Cost">{{ getProjectPrice(item)}}</md-table-cell>
         <md-table-cell>
@@ -47,7 +47,6 @@
 export default {
   name: "HomePage",
   name: "ProjectPage",
-  props: ["id"],
   data() {
     return {
       newName: undefined,
@@ -61,15 +60,18 @@ export default {
       }
       return "____";
     },
-    goToSummary({ id }) {
-      this.$router.push(`/project/${id}/summary`);
+    goToSummary({ _id }) {
+      this.$router.push(`/project/${_id}/summary`);
     },
-    goToConfiguration({ id }) {
-      this.$router.push(`/project/${id}`);
+    goToConfiguration({ _id }) {
+      this.$router.push(`/project/${_id}`);
     },
-    configNewProject() {
+    async configNewProject() {
       if (this.newName) {
-        this.$router.push(`/project/${100}`);
+        const newSoft = await this.$store.dispatch("createSoftware", {
+          name: this.newName
+        });
+        this.$router.push(`/project/${newSoft._id}`);
       }
       this.isError = true;
     }
