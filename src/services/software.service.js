@@ -16,8 +16,6 @@ export async function updateConfig({ config, _id }) {
     store.dispatch('loadUserProjects');
 }
 export function findProjectById(projects, id) {
-    console.log(projects, id);
-    projects.forEach((el) => console.log(el._id , id, el._id === id));
     return projects.find((el) => el._id === id)
 }
 

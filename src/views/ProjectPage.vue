@@ -1,10 +1,10 @@
 <template>
   <md-steppers :md-active-step.sync="selectedGroupInd" md-linear>
     <md-step
-      v-for="({label, value, description, required}, index) in configSettings"
+      v-for="({group, value, description, required}, index) in configSettings"
       :key="index"
       :id="''+index"
-      :md-description="label"
+      :md-description="group"
       :md-error="errorMessages[index]"
       :md-done.sync="finishedGroup[index]"
     >
@@ -61,7 +61,7 @@ export default {
       const groupInd = +this.selectedGroupInd;
       this.selectedConfig[groupInd] = this.selectedConfig[groupInd] || {
         value: [],
-        label: this.getCurrentConfigGroupLabel()
+        group: this.getCurrentConfigGroup()
       };
       const optionInd = this.selectedConfig[groupInd].value.findIndex(
         el => el.label === value.label
@@ -82,7 +82,7 @@ export default {
       }
     },
 
-    finishConfiguration() {
+    async finishConfiguration() {
       const missed = 0;
       this.configSettings.forEach((el, ind) => {
         if (!el.required) {
@@ -98,12 +98,13 @@ export default {
         }
       });
       if (!missed) {
-        updateConfig({ config: this.selectedConfig, _id: this.id });
+        await updateConfig({ config: this.selectedConfig, _id: this.id });
+        this.$router.push(`/project/${this.id}/summary`);
       }
       this.$forceUpdate();
     },
-    getCurrentConfigGroupLabel() {
-      return this.configSettings[this.selectedGroupInd].label;
+    getCurrentConfigGroup() {
+      return this.configSettings[this.selectedGroupInd].group;
     }
   },
   computed: {

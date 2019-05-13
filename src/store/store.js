@@ -20,7 +20,7 @@ export default new Vuex.Store({
         el.value = el.value.map(option => {
           return {
             ...option,
-            group: el.label
+            group: el.group
           }
         });
         return el;
