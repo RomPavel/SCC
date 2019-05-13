@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { findProjectById } from "../services/projects.service";
+import { findProjectById } from "../services/software.service";
 export default {
   name: "SummaryPage",
   props: ["id"],

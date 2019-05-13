@@ -11,7 +11,13 @@ export async function createSoftware({ name }) {
     store.dispatch('loadUserProjects');
     return data;
 }
+export async function updateConfig({ config, _id }) {
+    await axios.put(`${url}/software/update`, { config, _id  })
+    store.dispatch('loadUserProjects');
+}
 export function findProjectById(projects, id) {
-    return projects.find((el) => +el.id === +id)
+    console.log(projects, id);
+    projects.forEach((el) => console.log(el._id , id, el._id === id));
+    return projects.find((el) => el._id === id)
 }
 

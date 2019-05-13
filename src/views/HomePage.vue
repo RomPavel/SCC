@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { createSoftware } from '../services/software.service.js';
 export default {
   name: "HomePage",
   name: "ProjectPage",
@@ -68,7 +69,7 @@ export default {
     },
     async configNewProject() {
       if (this.newName) {
-        const newSoft = await this.$store.dispatch("createSoftware", {
+        const newSoft = await createSoftware({
           name: this.newName
         });
         this.$router.push(`/project/${newSoft._id}`);

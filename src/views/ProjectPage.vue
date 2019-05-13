@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { findProjectById } from "../services/projects.service";
+import { findProjectById, updateConfig } from "../services/software.service";
 export default {
   name: "ProjectPage",
   props: ["id"],
@@ -83,17 +83,23 @@ export default {
     },
 
     finishConfiguration() {
+      const missed = 0;
       this.configSettings.forEach((el, ind) => {
         if (!el.required) {
           this.errorMessages[ind] = "";
         } else if (!this.selectedConfig[ind]) {
           this.errorMessages[ind] = "Required";
+          missed++;
         } else if (this.selectedConfig[ind].value.length === 0) {
           this.errorMessages[ind] = "Required";
+          missed++;
         } else {
           this.errorMessages[ind] = "";
         }
       });
+      if (!missed) {
+        updateConfig({ config: this.selectedConfig, _id: this.id });
+      }
       this.$forceUpdate();
     },
     getCurrentConfigGroupLabel() {

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getAllProjects, createSoftware } from "../services/projects.service";
+import { getAllProjects } from "../services/software.service";
 import { getConfigSettings } from "../services/config.settings.service";
 
 Vue.use(Vuex)
@@ -44,9 +44,6 @@ export default new Vuex.Store({
       const configSettings = await getConfigSettings();
       commit('updateConfigSettings', configSettings);
     },
-    async createSoftware({ }, props) {
-      return createSoftware(props);
-    }
     // login({ commit }, props) {
     //   const token = props.token
 
