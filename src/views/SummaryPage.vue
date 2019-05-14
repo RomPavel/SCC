@@ -58,7 +58,8 @@ export default {
   name: "SummaryPage",
   props: ["id"],
   data() {
-    return { employeeSalary: "" };
+    const employeeSalary = this.project.employeeSalary || "";
+    return { employeeSalary };
   },
   watch: {
     project: function(project) {
