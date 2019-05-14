@@ -12,9 +12,15 @@ export async function createSoftware({ name }) {
     return data;
 }
 export async function updateConfig({ config, _id }) {
-    await axios.put(`${url}/software/update`, { config, _id  })
+    await axios.put(`${url}/software/update`, { config, _id })
     store.dispatch('loadUserProjects');
 }
+
+export async function updateEmployeeSalary({ employeeSalary, _id, currency }) {
+    await axios.put(`${url}/software/salary`, { employeeSalary, _id, currency })
+    store.dispatch('loadUserProjects');
+}
+
 export function findProjectById(projects, id) {
     return projects.find((el) => el._id === id)
 }

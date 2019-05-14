@@ -24,8 +24,25 @@
   a {
     color: #42b983;
   } */
-  .special_title {
+.special_title {
   font-size: 20px;
   margin-left: 14px;
   font-weight: 400;
+}
+.special_card{
+  min-width: 300px;
+}
+.special_table {
+  margin-top: 30px;
+  width: 30%;
+  padding-bottom: 30px;
+}
+
+.margin {
+  margin: 30px 15%;
+}
+
+html, body
+{
+    height: 100%;
 }

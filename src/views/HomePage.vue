@@ -1,6 +1,6 @@
 <template>
   <div class="margin">
-    <md-table v-model="projects" md-card>
+    <md-table v-model="projects" md-card class="special_card">
       <md-table-toolbar>
         <h1 class="md-title">My Software</h1>
       </md-table-toolbar>
@@ -21,7 +21,7 @@
       </md-table-row>
     </md-table>
 
-    <md-table md-card class="special_table">
+    <md-table md-card class="special_card special_table">
       <md-table-toolbar>
         <h1 class="md-title">New Software</h1>
       </md-table-toolbar>
@@ -44,7 +44,9 @@
 </template>
 
 <script>
-import { createSoftware } from '../services/software.service.js';
+import { createSoftware } from "../services/software.service.js";
+import { formatCost } from "../utils/cost.util";
+
 export default {
   name: "HomePage",
   name: "ProjectPage",
@@ -55,11 +57,8 @@ export default {
     };
   },
   methods: {
-    getProjectPrice({ cost, currency = "" }) {
-      if (cost) {
-        return `${cost}${currency}`;
-      }
-      return "____";
+    getProjectPrice({ cost, currency }) {
+      return formatCost({ cost, currency }) || "____";
     },
     goToSummary({ _id }) {
       this.$router.push(`/project/${_id}/summary`);
@@ -92,14 +91,6 @@ export default {
 </script>
 
 <style>
-.margin {
-  margin: 30px 15%;
-}
-.special_table {
-  margin-top: 30px;
-  width: 30%;
-  padding-bottom: 30px;
-}
 .special_div {
   width: 90%;
   margin: auto;
