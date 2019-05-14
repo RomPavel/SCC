@@ -29,7 +29,7 @@
         <md-card-content>
           <md-field>
             <label>Salary</label>
-            <md-input type="number" :value="employeeSalary" @input="updateEmployeeSalary"></md-input>
+            <md-input type="number" :value="employeeSalary()" @input="updateEmployeeSalary"></md-input>
             <span class="md-prefix">$</span>
           </md-field>
         </md-card-content>
@@ -60,6 +60,9 @@ export default {
         _id: this.id,
         currency: "$"
       });
+    },
+    employeeSalary() {
+      return this.project.employeeSalary || "";
     }
   },
   computed: {
@@ -70,9 +73,6 @@ export default {
     },
     laboriousness() {
       return this.project.laboriousness || "";
-    },
-    employeeSalary() {
-      return this.project.employeeSalary || "";
     },
     config() {
       return this.project.config || {};
