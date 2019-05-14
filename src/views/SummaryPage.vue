@@ -27,11 +27,14 @@
           <div class="md-title">Enter employee salary</div>
         </md-card-header>
         <md-card-content>
-          <md-field>
-            <label>Salary</label>
-            <md-input type="number" :value="employeeSalary()" @input="updateEmployeeSalary"></md-input>
-            <span class="md-prefix">$</span>
-          </md-field>
+          <div class="flex">
+            <md-field>
+              <label>Salary</label>
+              <md-input type="number" v-model="employeeSalary"></md-input>
+              <span class="md-prefix">$</span>
+            </md-field>
+            <md-button class="md-primary" @click="enterEmployeeSalary">OK</md-button>
+          </div>
         </md-card-content>
       </div>
       <div>
@@ -50,19 +53,25 @@ import {
   updateEmployeeSalary
 } from "../services/software.service";
 import { formatCost } from "../utils/cost.util";
+import { log } from "util";
 export default {
   name: "SummaryPage",
   props: ["id"],
+  data() {
+    return { employeeSalary: "" };
+  },
+  watch: {
+    project: function(project) {
+      this.employeeSalary = project.employeeSalary;
+    }
+  },
   methods: {
-    async updateEmployeeSalary(employeeSalary) {
+    async enterEmployeeSalary() {
       await updateEmployeeSalary({
-        employeeSalary,
+        employeeSalary: this.employeeSalary,
         _id: this.id,
         currency: "$"
       });
-    },
-    employeeSalary() {
-      return this.project.employeeSalary || "";
     }
   },
   computed: {
@@ -127,6 +136,12 @@ export default {
 .config_list span {
   font-size: 18px;
   font-weight: 100;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 </style>
 
