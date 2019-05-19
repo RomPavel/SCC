@@ -83,7 +83,7 @@ export default {
     },
 
     async finishConfiguration() {
-      const missed = 0;
+      let missed = 0;
       this.configSettings.forEach((el, ind) => {
         if (!el.required) {
           this.errorMessages[ind] = "";
