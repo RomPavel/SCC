@@ -14,7 +14,7 @@
         </md-table-cell>
         <md-table-cell>
           <template v-if="item.isConfigured">
-            <md-button @click="goToSummary(item)" class="md-primary">Перейти в заключение</md-button>
+            <md-button @click="goToSummary(item)" class="md-primary">Перейти к итогу</md-button>
           </template>
           <template v-else>Сначала сконфигурируйте ПО </template>
         </md-table-cell>
