@@ -52,7 +52,7 @@ export default {
     },
     isReqiured(required) {
       if (!required) return "";
-      return "* (Required)";
+      return "* (Обязательно)";
     },
     islastGroup(length, ind) {
       return +ind < +length - 1;
