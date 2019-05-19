@@ -20,7 +20,7 @@
         <md-card-header>
           <div class="md-title">Трудоемкость</div>
         </md-card-header>
-        <div class="cost">{{laboriousness}}</div>
+        <div class="cost">{{laboriousness}} (чел-дней)</div>
       </div>
       <div>
         <md-card-header>
@@ -31,7 +31,7 @@
             <md-field>
               <label>З/П</label>
               <md-input type="number" v-model="employeeSalary"></md-input>
-              <span class="md-prefix">$</span>
+              <span class="md-prefix">р.</span>
             </md-field>
             <md-button class="md-primary" @click="enterEmployeeSalary">OK</md-button>
           </div>
