@@ -23,7 +23,7 @@
         class="md-raised md-primary"
         @click="goToNextStep(index)"
       >Дальше</md-button>
-      <md-button class="md-raised md-primary" @click="finishConfiguration" v-else>Done</md-button>
+      <md-button class="md-raised md-primary" @click="finishConfiguration" v-else>Завершить</md-button>
     </md-step>
   </md-steppers>
 </template>
