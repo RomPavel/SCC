@@ -22,7 +22,7 @@
         v-if="islastGroup(configSettings.length, index)"
         class="md-raised md-primary"
         @click="goToNextStep(index)"
-      >Continue</md-button>
+      >Дальше</md-button>
       <md-button class="md-raised md-primary" @click="finishConfiguration" v-else>Done</md-button>
     </md-step>
   </md-steppers>

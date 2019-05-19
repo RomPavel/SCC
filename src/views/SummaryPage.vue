@@ -3,7 +3,7 @@
     <md-card class="special_card summary">
       <div>
         <md-card-header>
-          <div class="md-title">Summary for {{name}}</div>
+          <div class="md-title">Итог для {{name}}</div>
         </md-card-header>
 
         <md-content class="md-scrollbar config_list">
@@ -18,18 +18,18 @@
 
       <div>
         <md-card-header>
-          <div class="md-title">Laboriousness</div>
+          <div class="md-title">Трудоемкость</div>
         </md-card-header>
         <div class="cost">{{laboriousness}}</div>
       </div>
       <div>
         <md-card-header>
-          <div class="md-title">Enter employee salary</div>
+          <div class="md-title">Введите з/п сотрудника</div>
         </md-card-header>
         <md-card-content>
           <div class="flex">
             <md-field>
-              <label>Salary</label>
+              <label>З/П</label>
               <md-input type="number" v-model="employeeSalary"></md-input>
               <span class="md-prefix">$</span>
             </md-field>
@@ -39,7 +39,7 @@
       </div>
       <div>
         <md-card-header>
-          <div class="md-title">Cost of {{name}}</div>
+          <div class="md-title">Стоимость {{name}}</div>
         </md-card-header>
         <div class="cost">{{cost}}</div>
       </div>
@@ -78,7 +78,7 @@ export default {
   computed: {
     cost() {
       const { cost, currency } = this.project;
-      const costString = formatCost({ cost, currency }) || "Enter salary first";
+      const costString = formatCost({ cost, currency }) || "Сначала введите з/п";
       return costString;
     },
     laboriousness() {
